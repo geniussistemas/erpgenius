@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ERP Genius Sistemas</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+</head>
+<body>
+   <nav class="navbar-expand-lg navbar navbar-dark bg-primary">
+  <div class="container-fluid">
+      {% if altera == 0 %}
+         <a class="navbar-brand" href="#">Cadastro de Unidades </a>
+      {% endif %}
+       {% if altera == 1 %}
+         <a class="navbar-brand" href="#">Altera cadastro da Unidade</a>
+      {% endif %}
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+
+    </div>
+   </div>
+</nav>
+
+
+   <div class="container">
+        <hr>
+        <div class="row">
+            <div class="col">
+                <form method="POST" action="" class="border p-4 mt-2" enctype="multipart/form-data">
+                    {{ formCadUnidadeERP.csrf_token }}
+                    {% if altera == 0 %}
+                      <legend>Cadastrar Unidade</legend>
+                    {% endif %}
+                    {% if altera == 1 %}
+                      <legend>Altera Unidade</legend>
+                    {% endif %}
+
+                    <fieldset>
+                        <div class="form-group">
+                            {{ formCadUnidadeERP.sigla.label(class="form-control-label") }}
+                            {% if formCadUnidadeERP.sigla.errors %}
+                                {{ formCadUnidadeERP.sigla(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for erro in formCadUnidadeERP.sigla.errors %}
+                                    {{ erro }}
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                                {{ formCadUnidadeERP.sigla(class="form-control") }}
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ formCadUnidadeERP.URLUnidade.label(class="form-control-label") }}
+                            {% if formCadUnidadeERP.URLUnidade.errors %}
+                                {{ formCadUnidadeERP.URLUnidade(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for erro in formCadUnidadeERP.URLUnidade.errors %}
+                                    {{ erro }}
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                                {{ formCadUnidadeERP.URLUnidade(class="form-control") }}
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group">
+                            {{ formCadUnidadeERP.UsuarioSQl.label(class="form-control-label") }}
+                            {% if formCadUnidadeERP.UsuarioSQl.errors %}
+                                {{ formCadUnidadeERP.UsuarioSQl(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for erro in formCadUnidadeERP.UsuarioSQl.errors %}
+                                    {{ erro }}
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                                {{ formCadUnidadeERP.UsuarioSQl(class="form-control") }}
+                            {% endif %}
+                        </div>
+                            <div class="form-group">
+                            {{ formCadUnidadeERP.SenhaSQl.label(class="form-control-label") }}
+                            {% if formCadUnidadeERP.SenhaSQl.errors %}
+                                {{ formCadUnidadeERP.SenhaSQl(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for erro in formCadUnidadeERP.SenhaSQl.errors %}
+                                    {{ erro }}
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                                {{ formCadUnidadeERP.SenhaSQl(class="form-control") }}
+                            {% endif %}
+                        </div>
+
+                    </fieldset>
+                    {{ formCadUnidadeERP.botao_submit_cadunidade(class="btn btn-primary mt-2") }}
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" cros
+</body>
+</html>

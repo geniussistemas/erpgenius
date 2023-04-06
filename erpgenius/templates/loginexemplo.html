@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="container">
+        <h1>Faça Login ou Crie sua Conta para continuar</h1>
+        <hr>
+        <div class="row">
+            <div class="col">
+                <form method="POST"  class="border p-4 mt-2">
+                    <legend>Login</legend>
+                    <fieldset>
+                        <div class="form-group">
+                            {{ form_login.senha.label(class="form-control-label") }}
+                            {{ form_login.senha(class="form-control") }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_login.lembrar_dados.label(class="form-check-label") }}
+                            {{ form_login.lembrar_dados(class="form-check-input") }}
+                        </div>
+                    </fieldset>
+                    {{ form_login.botao_submit_login(class="btn btn-primary mt-2") }}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
